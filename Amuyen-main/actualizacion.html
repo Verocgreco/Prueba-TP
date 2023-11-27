@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualización</title>
+    <link rel="stylesheet" href="styles/actualizar.css">
+    <link rel="stylesheet" href="styles/generales.css" />
+    <link rel="icon" href="images/icono-pestaña.ico" />
+</head>
+
+<body>
+    <header class="temp-header">
+        <div class="d-header">
+            <img class="logo" src="images/SAVE_20220531_084519.jpg" alt="logo" />
+        </div>        
+        
+    </header>
+    <div id="app">
+        <form @submit.prevent="obtenerProducto">
+            <label for="codigo">Código:</label>
+            <input type="text" v-model="codigo" required><br>
+            <button type="submit">Buscar</button>
+        </form>
+        <form @submit.prevent="actualizar">
+            <label for="nombreModificar">Nombre:</label>
+            <input type="text" id="nombreModificar" v-model="nombre" required><br>
+
+            <label for="stockModificar">Cantidad:</label>
+            <input type="number" id="stockModificar" v-model="stock" required><br>
+
+            <label for="precioModificar">Precio:</label>
+            <input type="number" step="0.01" id="precioModificar" v-model="precio" required><br>
+
+            <img v-if="imagen_url && !imagenSeleccionada" :src="'/static/imagenes/' + imagen_url"
+                alt="Imagen del producto" style="max-width: 200px;">
+
+            <label for="nuevaImagen">Nueva Imagen:</label>
+            <input type="file" id="nuevaImagen" @change="seleccionarImagen"><br>
+            <button type="submit">Actualizar</button>
+            <span>
+            <a href="actualizacion.html">Limpiar</a>
+            
+            <a href="administracion.html">Volver</a>
+            </span>
+
+
+
+        </form>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./js/actualizar.js"></script>
+</body>
+
+</html>

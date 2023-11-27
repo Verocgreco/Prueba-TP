@@ -1,0 +1,39 @@
+*{
+    background-color: #d8843e;
+}
+
+#app label{
+font-size: 15px;
+display: block;
+font-family: Arial, Helvetica, sans-serif;
+
+
+}
+#app input{
+width: 300px;
+height: 20px;
+background-color: whitesmoke;
+grid-column: 2;
+}
+#app form{     
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+button{
+    width: 150px;
+    height: 40px;
+    background-color: rgb(162, 185, 101);
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 5px;  
+    font-family: Arial, Helvetica, sans-serif;  
+}
+form a{
+    color:white;
+    margin: 5px 80px;
+}

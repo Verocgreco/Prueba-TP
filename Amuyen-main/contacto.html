@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/generales.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/contacto.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link />
+    <script
+      src="https://kit.fontawesome.com/0ded3b2f18.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="images/icono-pestaña.ico" />
+    <title>FORMULARIO DE CONTACTO - AMUYEN TIENDA NATURAL</title>
+  </head>
+
+  <body>
+    <div class="general-container">
+      <header class="temp-header">
+        <div class="d-header">
+          <img class="logo" src="images/SAVE_20220531_084519.jpg" alt="logo" />
+        </div>
+        <div class="d-button">
+          <button id="abrir" class="abrir-menu">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </header>
+
+      <nav class="temp-nav">
+        <ul class="ul-container" id="ul-container">
+          <button class="cerrar-menu" id="cerrar">
+            <i class="bi bi-x"></i>
+          </button>
+          <li>
+            <a href="index.html"><strong>Inicio</strong></a>
+          </li>
+          <li>
+            <a href="productos.html"><strong>Productos</strong></a>
+          </li>
+          <li>
+            <a href="quienessomos.html"><strong>Quienes somos</strong></a>
+          </li>
+          <li>
+            <a href="ofertas.html"><strong>Ofertas</strong></a>
+          </li>
+          <li>
+            <a href="contacto.html"><strong>Contacto</strong></a>
+          </li>
+          <li>
+            <a href="preguntas.html"><strong>Preguntas Frecuentes</strong></a>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="temp-main">
+        <section>
+          <div class="contact-info">
+            <h2><span>FORMULARIO DE CONTACTO</span></h2>
+          </div>
+
+          <div class="contact-container">
+            <div class="container3">
+              <p class="animate__animated animate__fadeInLeft">
+                <i class="fa-solid fa-phone"></i>
+                <strong>Teléfono: </strong>+54 9 2926 45-6331
+              </p>
+              <p class="animate__animated animate__fadeInLeft">
+                <i class="fa-solid fa-envelope"></i>
+                <strong>Email: </strong> amuyen@tiendanatural.com
+              </p>
+              <p class="animate__animated animate__fadeInLeft">
+                <i class="fa-solid fa-location-dot"></i>
+                <strong> Dirección: </strong> Las Heras 2275
+              </p>
+              <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8957.816194053084!2d-61.95555275891311!3d-37.45915678468354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95eb73323aa7cdcb%3A0xe1ce877d1e2f41f9!2sLas%20Heras%202275%2C%20B7540%20Coronel%20Suarez%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1697492104264!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+            </div>
+
+            <div class="container">
+              <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                  <label for="nombre"
+                    >Nombre <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Nombre"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="apellido"
+                    >Apellido <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="apellido"
+                    name="apellido"
+                    placeholder="Apellido"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="telefono"
+                    >Teléfono <span class="required">*</span></label
+                  >
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Teléfono"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="direccion"
+                    >Dirección <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="direccion"
+                    name="direccion"
+                    placeholder="Dirección"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="localidad"
+                    >Localidad <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="localidad"
+                    name="localidad"
+                    placeholder="Localidad"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="provincia"
+                    >Provincia <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="provincia"
+                    name="provincia"
+                    placeholder="Provincia"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email"
+                    >Email <span class="required">*</span></label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="mensaje">Mensaje <i>(opcional)</i></label>
+                  <input
+                    type="text"
+                    id="mensaje"
+                    name="mensaje"
+                    placeholder="Mensaje"
+                    class="form-control"
+                  />
+                </div>
+                <button type="submit" class="btn-submit flip-scale-down-ver">
+                  ENVIAR
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+        <br />
+      </main>
+
+      <footer class="temp-footer">
+        <div class="elementos-footer">
+          <div class="navegacion">
+            <h4>NAVEGACIÓN</h4>
+
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="quienessomos.html">Quiénes somos</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+          </div>
+          <div class="contactanos">
+            <h4>CONTACTANOS</h4>
+            <div class="contact">
+              <span class="fa-solid fa-phone"></span>
+              <a href="tel: 2926456331">
+                <p style="margin-left: 10px">+54 9 2926 45-6331</p>
+              </a>
+            </div>
+            <div class="contact">
+              <span class="fas fa-envelope"></span>
+              <a href="mailto:amuyenfrutos@gmail.com">
+                <p style="margin-left: 10px">amuyenfrutos@gmail.com</p>
+              </a>
+            </div>
+            <div class="contact">
+              <span class="fa-solid fa-location-dot"></span>
+              <a
+                href="https://www.google.com/maps/place/B7540,+Provincia+de+Buenos+Aires/@-37.4653943,-61.9640502,13z/data=!3m1!4b1!4m6!3m5!1s0x95eb72dda7cb76af:0x4220a7d68505aad4!8m2!3d-37.4660573!4d-61.9259479!16s%2Fg%2F11g8pd9sr6?entry=ttu"
+              >
+                <p style="margin-left: 10px">Las heras 2275</p>
+              </a>
+            </div>
+          </div>
+          <div class="redes-sociales">
+            <h4>REDES SOCIALES</h4>
+            <div class="redes">
+              <span class="fab fa-instagram"></span>
+              <a href="https://www.instagram.com/amuyentiendanatural/">
+                <p style="margin-left: 10px">Instagram</p>
+              </a>
+            </div>
+            <div class="redes">
+              <span class="fab fa-facebook"></span>
+              <a href="https://www.facebook.com/amuyenfrutosecos/">
+                <p style="margin-left: 10px">Facebook</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/menu.js"></script>
+  </body>
+</html>

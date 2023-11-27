@@ -1,0 +1,416 @@
+/*---------------Template areas-------------*/
+
+.promo {
+  grid-area: promo;
+}
+
+.fotis1 {
+  grid-area: fotis1;
+}
+
+.fotis2 {
+  grid-area: fotis2;
+}
+
+.combo {
+  grid-area: combo;
+}
+
+.promo-dni {
+  grid-area: promo-dni;
+}
+
+.contenedor {
+  background-color: rgb(236, 221, 221);
+}
+
+/*---------------Header----------------*/
+
+#inicio {
+  justify-content: center;
+  background-color: rgb(216, 132, 62);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*---------------Contenedor-------------*/
+
+.contenedor {
+  display: grid;
+  grid-template: auto auto auto auto / 50% auto;
+  grid-template-areas:
+    "promo promo"
+    "fotis1 fotis2"
+    "combo combo"
+    "promo-dni promo-dni";
+}
+
+/*----------------Main----------------*/
+.contenedor {
+  clear: both;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.promo {
+  height: 200px;
+  color: white;
+  background-color: rgb(162, 185, 101);
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  text-decoration: double;
+  background-image: url(../images/pelota-de-navidad.png), url(../images/estrella-de-navidad.png);
+  background-size: 10%, 10%;
+  background-position: 5% 50%, 95% 50%;
+  background-repeat: no-repeat, no-repeat;
+
+}
+
+.promo h2 {
+  font-size: 60px;
+}
+
+.promo #octubre {
+  text-shadow: white 5px 5px;
+  text-align: center;
+  font-size: 100px;
+  color: crimson;
+  animation-name: octubre;
+  animation-duration: 1.5s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes octubre {
+  from {
+    font-size: 95px;
+  }
+
+  to {
+    font-size: 100px;
+  }
+}
+
+.combo {
+  background-image: url("../images/towfiqu-barbhuiya-Z5eQ1DTenTo-unsplash.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  text-align: center;
+  height: 400px;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.combo h1,
+.combo h2 {
+  font-weight: 900;
+  text-shadow: black 3px 3px;
+  animation-name: anime;
+  animation-duration: 1s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  text-decoration: double;
+}
+
+@keyframes anime {
+  from {
+    color: black;
+  }
+
+  to {
+    color: white;
+  }
+}
+
+.fotis1,
+.fotis2 {
+  padding-top: 30px;
+  width: auto;
+  border-color: rgb(216, 213, 213);
+  border-style: ridge;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.fotis1 {
+  padding-left: 20px;
+}
+
+.fotis2 {
+  padding-right: 20px;
+}
+
+#texto {
+  text-align: center;
+  font-size: 3.5em;
+}
+
+.fotis1 img,
+.fotis2 img {
+  transition: transform 0.5s ease;
+}
+
+.fotis1 img:hover,
+.fotis2 img:hover {
+  filter: contrast(120%);
+  transform: scale(1.1);
+}
+
+.fotis1 h3,
+.fotis2 h3 {
+  text-shadow: rgba(230, 68, 100, 0.877) -3px -3px;
+  font-weight: 900;
+  text-decoration: double;
+}
+
+#im1 {
+  margin-right: 20px;
+  margin-top: 60px;
+  max-width: 30%;
+  height: auto;
+  float: left;
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+#im2 {
+  margin-right: 20px;
+  margin-top: 0px;
+  max-width: 40%;
+  height: auto;
+  float: right;
+  margin-bottom: 20px;
+}
+
+#im3 {
+  width: 30%;
+  height: auto;
+  float: left;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+
+#texto h2 {
+  font-size: 3.5em;
+}
+
+#texto h3 {
+  font-size: 1.5em;
+}
+
+.promodni {
+  display: flex;
+  text-align: center;
+  padding: 30px;
+  background-color: #b68a75;
+  border: 5px ridge rgb(216, 213, 213);
+  font-family: "Montserrat", sans-serif;
+}
+
+.promodni p {
+  font-size: 30px;
+}
+
+#icono {
+  width: 150px;
+  height: auto;
+  font-weight: bolder;
+  background-color: antiquewhite;
+  justify-content: center;
+  margin: 50px;
+}
+
+#icono-mp {
+  width: 300px;
+  height: auto;
+  font-weight: bolder;
+  background-color: antiquewhite;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/*--------------Media Queries------------*/
+
+@media screen and (max-width: 1250px) {
+  .contenedor {
+    display: grid;
+    grid-template: auto auto auto auto / auto auto;
+    grid-template-areas:
+      /*"header header "
+      "menu1 menu1"*/
+      "promo promo"
+      "fotis1 fotis2"
+      "combo combo"
+      "promo-dni promo-dni";
+    /* "footer footer";*/
+  }
+
+
+  .promo h2 {
+    font-size: 50px;
+  }
+
+  .combo h1,
+  .combo h3 {
+    font-size: 40px;
+  }
+
+  .fotis1 #im1,
+  .fotis1 #im3 {
+    float: none;
+    text-align: center;
+    margin-left: 60px;
+    margin-top: 5px;
+  }
+
+  .fotis2 #im2 {
+    float: none;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    margin-top: 0px;
+  }
+
+  .fotis1,
+  .fotis2 {
+    padding: 10px;
+  }
+
+  .my-footer {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 965px){
+  .contenedor{
+    display: grid;
+    grid-template: auto auto auto auto auto / auto auto;
+    grid-template-areas:      
+      "promo promo"
+      "fotis1 fotis1"
+      "fotis2 fotis2"
+      "combo combo"
+      "promo-dni promo-dni";
+  }
+}
+
+
+@media screen and (max-width: 885px) {
+  .contenedor {
+    clear: both;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .contenedor {
+    display: grid;
+    grid-template: auto auto auto auto auto / auto auto;
+    grid-template-areas:
+      /*"header"
+      "menu1"*/
+      "promo promo"
+      "fotis1 fotis1"
+      "fotis2 fotis2"
+      "combo combo"
+      "promo-dni promo-dni";
+    /*"footer"*/
+  }
+
+
+
+  .combo h3 {
+    font-size: 20px;
+  }
+
+  .combo h1 {
+    font-size: 40px;
+  }
+
+  .promo {
+    justify-content: center;
+  }
+
+  .promo h2 {
+    font-size: 33px;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  .promo #octubre {
+    animation: none;
+    font-size: 500%;
+    justify-content: center;
+  }
+
+  
+  .fotis1,
+  .fotis2 {
+    padding-top: 30px;
+    width: auto;
+    border-color: rgb(216, 213, 213);
+    border-style: ridge;
+    text-align: center;
+  }
+
+  .fotis1 #im1 {
+    margin-right: 20px;
+    margin-top: 60px;
+    max-width: 30%;
+    height: auto;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 20px;
+  }
+
+  .fotis2 #im2 {
+    margin-right: 20px;
+    margin-top: 0px;
+    max-width: 40%;
+    height: auto;
+    float: right;
+    margin-bottom: 20px;
+  }
+
+  .fotis1 #im3 {
+    width: 30%;
+    height: auto;
+    float: left;
+    margin-bottom: 30px;
+    margin-left: 10px;
+  }
+
+  .combo h1,
+  .combo h3 {
+    justify-content: center;
+    padding-top: 50px;
+  }
+
+  .promo-dni .promodni {
+    display: block;
+    padding: 10px;
+  }
+
+  .promo-dni .promodni p {
+    font-size: 20px;
+  }
+
+  .promo-dni .promodni #icono {
+    width: 100px;
+    margin: 10px;
+  }
+
+  .promo-dni .promodni #icono-mp {
+    width: 150px;
+    margin: 10px;
+  }
+
+  .my-footer {
+    font-size: 12px;
+  }
+
+
+
+}
