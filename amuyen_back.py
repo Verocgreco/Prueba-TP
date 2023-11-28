@@ -81,12 +81,12 @@ producto = Producto(host='localhost', user='root', password='', database='amuyen
 ruta_img = './static/imagenes/'
 print(producto.mostrar_producto(1))#prueba
 
-@app.route("/productos", methods=["GET"])
+@app.route("/productoss", methods=["GET"])
 def listar_productos():
     productos = producto.listar_productos()
     return jsonify(productos) 
 
-@app.route("/productos/<int:codigo>", methods=["GET"])
+@app.route("/productoss/<int:codigo>", methods=["GET"])
 def mostrar_producto(codigo):
     prod = producto.buscar_producto_por_codigo(codigo)
     if(producto):
@@ -94,7 +94,7 @@ def mostrar_producto(codigo):
     else:
         return "Producto inexistente", 404
     
-@app.route("/productos", methods=["POST"])
+@app.route("/productoss", methods=["POST"])
 
 def cargar_producto():
     
@@ -116,11 +116,10 @@ def cargar_producto():
             return jsonify({"mensaje": "Producto agregado"}), 201
         else:
             return jsonify({"mensaje": "Errorrrrrrrrrrr"}), 400
-    else:
-        return jsonify({"mensaje": "Ya existe un producto con ese código"}),
+    
     
 
-@app.route("/productos/<int:codigo>", methods=["PUT"])
+@app.route("/productoss/<int:codigo>", methods=["PUT"])
 def modificar_producto(codigo):  
     imagen = request.files.get('imagen')  # Cambia 'imagen' por el nombre correcto de tu campo de imagen
     nombre_img = None

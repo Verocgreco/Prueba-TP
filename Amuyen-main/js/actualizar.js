@@ -12,7 +12,7 @@ const app = Vue.createApp({
     },
     methods: {
         obtenerProducto() {
-            fetch(URL + 'productos/' + this.codigo)
+            fetch(URL + 'productoss/' + this.codigo)
                 .then(response => response.json())
                 .then(data => {
                     this.nombre = data.nombre;
@@ -38,7 +38,7 @@ const app = Vue.createApp({
                 formData.append('imagen', this.imagenSeleccionada, this.imagenSeleccionada.name);
             }
 
-            fetch(URL + 'productos/' + this.codigo, {
+            fetch(URL + 'productoss/' + this.codigo, {
                 method: 'PUT',
                 body: formData,
             })

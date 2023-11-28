@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const codigoProducto = urlParams.get('codigo');
 
 
-    fetch(url + 'productos/'+codigoProducto)
+    fetch(url + 'productoss/'+codigoProducto)
     .then(function (response) {
         if (response.ok) {return response.json(); }
     })

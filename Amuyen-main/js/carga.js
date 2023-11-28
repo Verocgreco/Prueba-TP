@@ -22,7 +22,7 @@ const app = Vue.createApp({
                 formData.append('imagen', this.imagenSeleccionada, this.imagenSeleccionada.name);
             }
 
-            fetch(URL + 'productos', {
+            fetch(URL + './productoss', {
                 method: 'POST',
                 body: formData,
             })
