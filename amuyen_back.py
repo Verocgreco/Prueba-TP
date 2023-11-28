@@ -116,11 +116,11 @@ def cargar_producto():
         nombre_base, extension = os.path.splitext(nombre_img)
         nombre_img = f"{nombre_base}_{int(time.time())}{extension}"        
 
-        if producto.cargar_producto(codigo, nombre, precio, stock, imagen):  
+        if producto.cargar_producto(codigo, nombre, precio, stock, nombre_img):  
             imagen.save(os.path.join(ruta_img, nombre_img))          
             return jsonify({"mensaje": "Producto agregado"}), 201
         else:
-            return jsonify({"mensaje": "Errorrrrrrrrrrr"}), 400
+            return jsonify({"mensaje": "Este producto ya existe"}), 400
     
     
 
