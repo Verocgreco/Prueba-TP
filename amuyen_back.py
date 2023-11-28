@@ -39,8 +39,14 @@ class Producto:
         self.cursor = self.conn.cursor(dictionary=True)
 
     def cargar_producto(self, codigo, nombre, precio, stock, imagen):
+        self.cursor.execute(f"SELECT * FROM productos WHERE codigo = {codigo}")
+        prod_existente = self.cursor.fetchone()
+        if prod_existente:
+            return False
+        
         sql= "INSERT INTO productos(codigo, nombre, precio, stock, imagen_url) VALUES (%s, %s, %s, %s, %s)"
         valores = (codigo, nombre, precio, stock, imagen)
+        
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return True
