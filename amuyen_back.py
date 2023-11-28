@@ -46,7 +46,7 @@ class Producto:
         
         sql= "INSERT INTO productos(codigo, nombre, precio, stock, imagen_url) VALUES (%s, %s, %s, %s, %s)"
         valores = (codigo, nombre, precio, stock, imagen)
-        
+
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return True
@@ -101,7 +101,6 @@ def mostrar_producto(codigo):
         return "Producto inexistente", 404
     
 @app.route("/productoss", methods=["POST"])
-
 def cargar_producto():
     
     codigo = request.form['codigo']
@@ -115,10 +114,10 @@ def cargar_producto():
     if not prod:
         nombre_img = secure_filename(imagen.filename)    
         nombre_base, extension = os.path.splitext(nombre_img)
-        nombre_img = f"{nombre_base}_{int(time.time())}{extension}"
-        imagen.save(os.path.join(ruta_img, nombre_img))
+        nombre_img = f"{nombre_base}_{int(time.time())}{extension}"        
 
-        if producto.cargar_producto(codigo, nombre, precio, stock, imagen):            
+        if producto.cargar_producto(codigo, nombre, precio, stock, imagen):  
+            imagen.save(os.path.join(ruta_img, nombre_img))          
             return jsonify({"mensaje": "Producto agregado"}), 201
         else:
             return jsonify({"mensaje": "Errorrrrrrrrrrr"}), 400
