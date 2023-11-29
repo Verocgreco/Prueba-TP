@@ -137,6 +137,7 @@ def modificar_producto(codigo):
                 os.remove(ruta_imagen)    
         elif prod["imagen_url"]: 
             nombre_img = prod["imagen_url"]
+    
 
     if producto.modificar_producto(codigo, nombre, precio, stock, nombre_img):
         return jsonify({"mensaje": "Producto actualizado"}), 200

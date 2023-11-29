@@ -5,33 +5,54 @@ const app = Vue.createApp({
             codigo: '',
             nombre: '',
             stock: '',
-            precio: '',            
+            precio: '',
             imagen_url: '',
-            imagenSeleccionada:'',      
+            imagenSeleccionada: '',
         };
     },
+
     methods: {
         obtenerProducto() {
-            fetch(URL + 'productoss/' + this.codigo)
-                .then(response => response.json())
+            if(this.codigo<=0){//obliga a ingresar un código entero positivo
+                alert('Ingrese un código válido (mayor a 0)')
+            }
+            fetch(URL + 'productoss/' + this.codigo)            
+                .then(response => {
+                    return response.json();
+                })
                 .then(data => {
+                    if (!data) {
+                        // Si no encuentra el producto, limpia los campos y muestra alerta
+                        this.limpiarFormulario();
+                        alert('Producto inexistente');
+                        return;
+                    }
                     this.nombre = data.nombre;
                     this.stock = data.stock;
-                    this.precio = data.precio;                    
-                    this.imagen_url =  data.imagen_url;                    
+                    this.precio = data.precio;
+                    this.imagen_url = data.imagen_url;
+                    if (!data.nombre) {
+                        this.limpiarFormulario();
+                    }
                 })
                 .catch(error => console.error('Error:', error));
+
+
         },
         seleccionarImagen(event) {
             const file = event.target.files[0];
             this.imagenSeleccionada = file;
-           // this.imagenUrlTemp = URL.createObjectURL(file); // Crea una URL temporal para la vista previa
+
         },
         actualizar() {
+            if (this.stock <= 0 || this.precio <= 0) {//validación de los números ingresados 
+                alert('Por favor, ingrese números positivos para Stock y Precio.');
+                return;
+            }
             const formData = new FormData();
             formData.append('codigo', this.codigo);
             formData.append('nombre', this.nombre);
-            formData.append('stock', this.stock);            
+            formData.append('stock', this.stock);
             formData.append('precio', this.precio);
 
             if (this.imagenSeleccionada) {
@@ -59,9 +80,10 @@ const app = Vue.createApp({
             this.precio = '';
             this.imagen_url = '';
             this.imagenSeleccionada = null;
-            this.imagenUrlTemp = null;            
+            this.imagenUrlTemp = null;
         }
     }
 });
 
 app.mount('#app');
+
