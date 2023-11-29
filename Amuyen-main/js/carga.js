@@ -12,6 +12,10 @@ const app = Vue.createApp({
     },
     methods: {
         cargarProducto() {
+            if (this.stock <= 0 || this.precio <= 0 || this.codigo <=0) {//validación de enteros positivos
+                alert('Por favor, ingrese números mayores a 0.');
+                return;
+            }
             const formData = new FormData();
             formData.append('codigo', this.codigo);
             formData.append('nombre', this.nombre);
@@ -33,7 +37,7 @@ const app = Vue.createApp({
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Error al agregar el producto....');
+                    alert('El código ya existe, no se puede cargar el producto');
                 });   
     
         },
