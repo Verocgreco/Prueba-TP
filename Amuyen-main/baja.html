@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dar de Baja</title>
+    <link rel="stylesheet" href="styles/actualizar.css">
+    <link rel="stylesheet" href="styles/generales.css" />
+    <link rel="icon" href="images/icono-pestaña.ico" />
+</head>
+
+<body>
+    <header class="temp-header">
+        <div class="d-header">
+            <img class="logo" src="images/SAVE_20220531_084519.jpg" alt="logo" />
+        </div>
+    </header>
+    <div id="app">
+        <form @submit.prevent="obtenerProducto">
+            <label for="codigo">Código:</label>
+            <input type="number" v-model="codigo" required><br>
+            <button type="submit">Buscar</button>
+        </form>
+        <form @submit.prevent="darDeBaja">
+            <label for="nombreBaja">Nombre:</label>
+            <input type="text" id="nombreBaja" v-model="nombre" readonly><br>
+
+            <label for="stockBaja">Cantidad:</label>
+            <input type="number" id="stockBaja" v-model="stock" readonly><br>
+
+            <label for="precioBaja">Precio:</label>
+            <input type="number" step="0.01" id="precioBaja" v-model="precio" readonly><br>
+
+            <img v-if="imagen_url" :src="'/static/imagenes/' + imagen_url"
+                alt="Imagen del producto" style="max-width: 200px;">
+
+            <button type="submit">Dar de Baja</button>
+            <span>
+                <a href="actualizacion.html">Limpiar</a>
+                <a href="administracion.html">Volver</a>
+            </span>
+        </form>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./js/baja.js"></script>
+</body>
+
+</html>
