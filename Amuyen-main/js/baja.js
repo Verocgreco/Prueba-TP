@@ -18,9 +18,18 @@ const app = Vue.createApp({
             }
 
             fetch(URL + 'productoss/' + this.codigo)
-                .then(response => {
-                    return response.json();
-                })
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        // Si el producto no se encuentra, limpia los campos y muestra alerta
+                        this.limpiarFormulario();
+                        alert('Producto inexistente');
+                    } else {
+                        throw new Error('Error en la solicitud');
+                    }
+                }
+                return response.json();
+            })
                 .then(data => {
                     if (!data) {
                         this.limpiarFormulario();

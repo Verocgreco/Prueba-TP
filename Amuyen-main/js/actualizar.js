@@ -13,13 +13,22 @@ const app = Vue.createApp({
 
     methods: {
         obtenerProducto() {
-            if(this.codigo<=0){//obliga a ingresar un código entero positivo
+            if (this.codigo <= 0) {//obliga a ingresar un código entero positivo
                 alert('Ingrese un código válido (mayor a 0)')
             }
-            fetch(URL + 'productoss/' + this.codigo)            
-                .then(response => {
-                    return response.json();
-                })
+            fetch(URL + 'productoss/' + this.codigo)
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        // Si el producto no se encuentra, limpia los campos y muestra alerta(404)
+                        this.limpiarFormulario();
+                        alert('Producto inexistente');
+                    } else {
+                        throw new Error('Error en la solicitud');
+                    }
+                }
+                return response.json();
+            })
                 .then(data => {
                     if (!data) {
                         // Si no encuentra el producto, limpia los campos y muestra alerta
@@ -36,6 +45,7 @@ const app = Vue.createApp({
                     }
                 })
                 .catch(error => console.error('Error:', error));
+            
 
 
         },
