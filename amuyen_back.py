@@ -10,6 +10,7 @@ app = Flask(__name__)
 #   r"/productos/*": {"origins": "http://127.0.0.1:5500"},
 #  r"/clientes/*": {"origins": "http://127.0.0.1:5500"}
 #})
+CORS(app)
 
 class Producto:
     def __init__(self, host, user, password, database):
