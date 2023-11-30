@@ -6,7 +6,10 @@ import os
 import time
 
 app = Flask(__name__)
-CORS(app, resources={r"/productos/*": {"origins": "http://127.0.0.1:5500"}})
+CORS(app, resources={
+    r"/productos/*": {"origins": "http://127.0.0.1:5500"},
+    r"/clientes/*": {"origins": "http://127.0.0.1:5500"}
+})
 
 class Producto:
     def __init__(self, host, user, password, database):
@@ -35,8 +38,16 @@ class Producto:
             imagen_url VARCHAR(250) DEFAULT NULL
         )''')
         self.conn.commit()
+
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS clientes (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            nombre VARCHAR(55) NOT NULL,
+            apellido VARCHAR(55) NOT NULL,
+            comentario VARCHAR(255) NULL)''')
+        self.conn.commit()
         self.cursor.close()
         self.cursor = self.conn.cursor(dictionary=True)
+
 
     def cargar_producto(self, codigo, nombre, precio, stock, imagen):
         self.cursor.execute(f"SELECT * FROM productos WHERE codigo = {codigo}")
@@ -71,6 +82,47 @@ class Producto:
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return self.cursor.rowcount > 0
+    
+    #----------------------------------------------------------------
+    def agregar_cliente(self, nombre, apellido, comentario):
+        # Verificamos si ya existe un producto con el mismo código
+        if self.consultar_cliente(nombre,apellido):
+            return False
+
+        sql = "INSERT INTO clientes (nombre, apellido, comentario) VALUES (%s, %s, %s)"
+        valores = (nombre, apellido, comentario)
+
+        self.cursor.execute(sql, valores)        
+        self.conn.commit()
+        return True
+
+    #----------------------------------------------------------------
+    def consultar_cliente(self, nombre, apellido):
+        # Consultamos un cliente a partir de su id
+        self.cursor.execute(f"SELECT * FROM clientes WHERE nombre = '{nombre}' and apellido = '{apellido}'")
+        return self.cursor.fetchone()
+
+    #----------------------------------------------------------------
+    def listar_clientes(self):
+        self.cursor.execute("SELECT * FROM clientes")
+        clientes = self.cursor.fetchall()
+        return clientes
+    
+    #----------------------------------------------------------------
+    def mostrar_cliente(self, id):
+        # Mostramos los datos de un cliente a partir de su id
+        cliente = self.consultar_cliente(id)
+        if cliente:
+            print("-" * 40)
+            print(f"Id.....: {cliente['id']}")
+            print(f"Nombre: {cliente['nombre']}")
+            print(f"Apellido...: {cliente['apellido']}")
+            print(f"Comentario.....: {cliente['comentario']}")
+            print("-" * 40)
+        else:
+            print("Cliente no encontrado.")
+
+    
 
 # Ajusta los parámetros según tu configuración
 producto = Producto(host='localhost', user='root', password='', database='productos')
@@ -161,6 +213,27 @@ def dar_de_baja_producto(codigo):
         return jsonify({"mensaje": "Producto dado de baja correctamente"}), 200
     else:
         return jsonify({"mensaje": "Producto inexistente"}), 404
+    
+#--------------------------------------------------------------------
+@app.route("/clientes", methods=["GET"])
+def listar_clientes():
+    clientes = producto.listar_clientes()
+    return jsonify(clientes)
+
+#--------------------------------------------------------------------
+
+@app.route("/clientes", methods=["POST"])
+def agregar_cliente():
+    nombre = request.form['nombre']
+    apellido = request.form['apellido']
+    comentario = request.form['comentario']
+
+    if producto.agregar_cliente(nombre, apellido, comentario):
+        return jsonify({"mensaje": "Comentario agregado"}), 201
+    else:
+        return jsonify({"mensaje": "El comentario ya existe"}), 400
+
+#--------------------------------------------------------------------
 
 if __name__ == "__main__":    
     app.run(debug=True)
